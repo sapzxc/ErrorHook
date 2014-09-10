@@ -104,9 +104,11 @@ abstract class AbstractNotifier
 			// no need any checks
 			return false;
 		}
-
+		
+		return false;
+/*TODO add some cacher?
 		$cid = 'duperr_'.$hash;
-		$cacher = \fmcore\CacheRegistry::errorHook();
+		$cacher = \Cache::getErrorHookCacher();
 		if($cacher->hasItem($cid))
 		{
 			return true;
@@ -114,6 +116,7 @@ abstract class AbstractNotifier
 
 		$cacher->setItem($cid,1);
 		return false;
+*/
 	}
 
 	/**
