@@ -19,3 +19,11 @@ else
 new \ErrorHook\Catcher($errorNotifier);
 
 ```
+
+Benefits
+--------
+
+1. Catching errors, notices, exceptions and send to notifier. Currently available Syslog and Mail notifiers.
+2. Prevent sending duplicates (error/notices in cycles)
+3. Mail notifier has good output with all detailed info need for debug.
+4. Tested a lot time with big project and bit oututs. Fixed memory exceeded errors.
