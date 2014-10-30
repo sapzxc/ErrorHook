@@ -11,6 +11,11 @@ abstract class AbstractNotifier
 	 * @var int track error duplicates timeout
 	 */
 	protected $preventDuplicates = 0;
+	
+	/**
+	 * @var array store errors duplicates as overhead of absence cacher
+	 */
+	 protected $duplicatesRegistry = [];
 
 	/**
 	 * notify wrapper to handle detailed notify
@@ -105,9 +110,13 @@ abstract class AbstractNotifier
 			return false;
 		}
 		
-		return false;
-/*TODO add some cacher?
 		$cid = 'duperr_'.$hash;
+		
+		$isDuplicate = isset($this->duplicatesRegistry[$cid]);
+		$this->duplicatesRegistry[$cid]=true;
+		return $isDuplicate;
+/*TODO add some cacher?
+		
 		$cacher = \Cache::getErrorHookCacher();
 		if($cacher->hasItem($cid))
 		{
